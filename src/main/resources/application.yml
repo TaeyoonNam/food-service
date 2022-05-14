@@ -5,9 +5,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/Food_Service?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
-    username: root
-    password: vldkfdkdl1!23
+    url: jdbc:mysql://localhost:3306/foodService?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: tom
+    password: test1!23
 
   # ----- ORM이란??? -----
   # RDB 테이블을 객체지향적으로 사용하기 위한 기술입니다. 즉, 객체가 테이블이 되도록 매핑 시켜주는 것을 말합니다.
