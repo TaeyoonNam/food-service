@@ -19,8 +19,7 @@ import me.naming.foodservice.dto.MemJoinStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-// JPA에서 @ToString 사용 시 순환 참조 문제 발생 할 수 있다. 차후 프로젝트 진행하면서 해당 내용을 좀 더 자세히 다뤄볼 것.
-// 참고 : https://binarycube.tistory.com/1
+// JPA에서 양방향 맺고 있는 객체에서 @ToString 사용 시. 순환 참조 문제 발생 할 수 있다.
 @Getter
 @Entity
 @Table(name = "MEMBERS")

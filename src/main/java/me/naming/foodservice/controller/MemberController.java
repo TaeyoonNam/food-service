@@ -1,7 +1,7 @@
 package me.naming.foodservice.controller;
 
 import javax.validation.Valid;
-import me.naming.foodservice.domain.Member;
+import me.naming.foodservice.dto.MemberDto;
 import me.naming.foodservice.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +15,9 @@ public class MemberController {
   @Autowired
   private MemberService memberService;
 
-  @PostMapping
-  public ResponseEntity create(@Valid @RequestBody Member member) {
-    return ResponseEntity.ok(memberService.save(member));
+  @PostMapping("/member")
+  public ResponseEntity registerMember(@RequestBody @Valid MemberDto memberDto) {
+    return ResponseEntity.ok(memberService.save(memberDto));
   }
 
 }
