@@ -11,9 +11,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 import me.naming.foodservice.dto.MemJoinStatus;
 import org.hibernate.annotations.CreationTimestamp;
@@ -59,11 +59,12 @@ public class Member {
   @Column(name = "UPDATE_DATE", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
   private Date updateAt;
 
-//  public Member(MemJoinStatus memJoinStatus, String name, String email,  String password, String mobileNum) {
-//    this.memJoinStatus = memJoinStatus;
-//    this.name = name;
-//    this.email = email;
-//    this.mobileNum = mobileNum;
-//    this.password = password;
-//  }
+  @Builder
+  public Member(MemJoinStatus memJoinStatus, String name, String email,  String password, String mobileNum) {
+    this.memJoinStatus = memJoinStatus;
+    this.name = name;
+    this.email = email;
+    this.mobileNum = mobileNum;
+    this.password = password;
+  }
 }

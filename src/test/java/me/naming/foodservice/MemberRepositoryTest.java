@@ -17,10 +17,10 @@ public class MemberRepositoryTest {
   @Autowired
   private MemberRepository memberRepository;
 
-//  @Test
-//  public void add () {
-//    memberRepository.save(new Member(MemJoinStatus.NORMAL, "naming", "naming@gmail.com", "01022021812", "testPwd"));
-//  }
+  @Test
+  public void add () {
+    memberRepository.save(new Member(MemJoinStatus.NORMAL, "naming", "naming@gmail.com", "01022021812", "testPwd"));
+  }
 
   @Test
   public void mapStructTest() {
@@ -36,9 +36,5 @@ public class MemberRepositoryTest {
     assertThat(member.getEmail()).isEqualTo(chgMemberDto.getEmail());
     assertThat(member.getName()).isEqualTo(chgMemberDto.getName());
     assertThat(member.getPassword()).isEqualTo(chgMemberDto.getPassword());
-
-    System.out.println(member.toString());
-    System.out.println(chgMemberDto.toString());
-    System.out.println(memberDto.toString());
   }
 }
