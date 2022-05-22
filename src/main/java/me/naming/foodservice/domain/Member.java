@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import me.naming.foodservice.dto.MemJoinStatus;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -42,6 +43,10 @@ public class Member {
 
   @Column(name = "PASSWORD", nullable = false)
   private String password;
+
+  @Column(name = "PWD_FAIL_CNT", nullable = false)
+  @ColumnDefault("0")
+  private Integer pwdFailCnt;
 
   @Column(name = "MOBILE_NUM", nullable = false)
   private String mobileNum;

@@ -1,4 +1,4 @@
-package me.naming.foodservice;
+package me.naming.foodservice.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,7 +6,6 @@ import me.naming.foodservice.domain.Member;
 import me.naming.foodservice.dto.MemJoinStatus;
 import me.naming.foodservice.dto.MemberDto;
 import me.naming.foodservice.mapper.MemberMapper;
-import me.naming.foodservice.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +18,14 @@ public class MemberRepositoryTest {
 
   @Test
   public void add () {
-    memberRepository.save(new Member(MemJoinStatus.NORMAL, "naming", "naming@gmail.com", "01022021812", "testPwd"));
+    Member insertMember = new Member(MemJoinStatus.NORMAL, "testing", "test@gmail.com", "testPwd", "01012341234");
+    memberRepository.save(insertMember);
+    Member selectedMember = memberRepository.getMemberByEmail(insertMember.getEmail());
+
+    assertThat(selectedMember.getEmail()).isEqualTo(insertMember.getEmail());
+    assertThat(selectedMember.getMemJoinStatus()).isEqualTo(insertMember.getMemJoinStatus());
+    assertThat(selectedMember.getName()).isEqualTo(insertMember.getName());
+    assertThat(selectedMember.getMobileNum()).isEqualTo(insertMember.getMobileNum());
   }
 
   @Test
