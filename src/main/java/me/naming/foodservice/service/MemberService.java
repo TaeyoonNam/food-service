@@ -15,7 +15,19 @@ public class MemberService {
 
   public Member save(MemberDto memberDto) {
     memberDto.encryptPassword();
-    return memberRepository.save(MemberMapper.INSTANCE.memberDtoToMember(memberDto));
+    Member member = MemberMapper.INSTANCE.memberDtoToMember(memberDto);
+    return memberRepository.save(member);
+  }
+
+  public Member login(MemberDto memberDto) {
+    Member member = memberRepository.getMemberByEmail(memberDto.getEmail());
+    memberDto.encryptPassword();
+
+    if(!member.getPassword().equals(memberDto.getPassword())) {
+      throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+    }
+
+    return member;
   }
 
 }

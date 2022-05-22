@@ -31,11 +31,16 @@ public class MemberDto {
       message = "비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 20자의 비밀번호여야 합니다.")
   private String password;
 
+  private String mobileNum;
+
+  private MemJoinStatus memJoinStatus = MemJoinStatus.NORMAL;
+
   @Builder
-  public MemberDto(String email, String name, String password) {
+  public MemberDto(String email, String name, String password, String mobileNum) {
     this.email = email;
     this.name = name;
     this.password = password;
+    this.mobileNum = mobileNum;
   }
 
   public void encryptPassword() {

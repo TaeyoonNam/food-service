@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +35,7 @@ public class Member {
   private long id;
 
   @Column(name = "MEM_JOIN_STATUS", nullable = false)
+  @Enumerated(EnumType.STRING)
   private MemJoinStatus memJoinStatus;
 
   @Column(name = "NAME", nullable = false)
@@ -46,7 +49,7 @@ public class Member {
 
   @Column(name = "PWD_FAIL_CNT", nullable = false)
   @ColumnDefault("0")
-  private Integer pwdFailCnt;
+  private Integer pwdFailCnt = 0;
 
   @Column(name = "MOBILE_NUM", nullable = false)
   private String mobileNum;
